@@ -3,5 +3,9 @@
 echo "Running migrations..."
 php artisan migrate --force
 
-echo "Starting Laravel..."
-php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+echo "Caching config..."
+php artisan config:clear
+php artisan config:cache
+
+echo "Starting Apache..."
+apache2-foreground
