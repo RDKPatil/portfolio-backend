@@ -20,8 +20,8 @@ COPY . .
 # Laravel public folder
 RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
 
-# Install dependencies
-RUN composer install --no-dev --optimize-autoloader
+# Install dependencies (IMPORTANT FIX)
+RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 # Permissions
 RUN chown -R www-data:www-data storage bootstrap/cache
